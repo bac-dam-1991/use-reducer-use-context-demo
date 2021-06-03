@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import "./App.css";
+import AddExerciseForm from "./components/AddExerciseForm/AddExerciseForm";
+import ExerciseList from "./components/ExerciseList/ExerciseList";
+import ExerciseDispatchContext from "./contexts/ExerciseDispatchProvider";
+import ExerciseStateContext from "./contexts/ExerciseStateProvider";
+import exerciseReducer, { InitialState } from "./reducers/exerciseReducer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export interface AppProps {}
+
+const App: React.FC<AppProps> = () => {
+	const [state, dispatch] = React.useReducer(exerciseReducer, InitialState);
+	return (
+		<main>
+			<h1>Exercise tracker</h1>
+			<ExerciseDispatchContext.Provider value={{ dispatch }}>
+				<AddExerciseForm />
+				<ExerciseStateContext.Provider value={{ state }}>
+					<ExerciseList />
+				</ExerciseStateContext.Provider>
+			</ExerciseDispatchContext.Provider>
+		</main>
+	);
+};
 
 export default App;
