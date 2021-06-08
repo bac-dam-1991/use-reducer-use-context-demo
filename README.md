@@ -2,6 +2,10 @@
 
 This example App shows the use of both `useContext` and `useReducer` hooks to manage application wide states in a React app.
 
+## Getting started
+
+Clone this repository and run `npm install` at the project's root directory.
+
 ## Why use the `useReducer` hook?
 
 The `useReducer` hook simplifies complex state logic. This hook is preferred over the `useState` hook in these situations.

@@ -1,11 +1,12 @@
 import IExerciseItem from "../domain/Interfaces/IExerciseItem";
+import { v4 as uuid } from "uuid";
 
 export interface ExerciseState {
 	exercises: IExerciseItem[];
 }
 
 export const InitialState: ExerciseState = {
-	exercises: [],
+	exercises: [{ id: uuid(), name: "Push up" }],
 };
 
 export const EXERCISE_ACTIONS = {
